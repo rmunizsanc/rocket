@@ -16,4 +16,10 @@ class Newsletter extends Model
         'active',
         'sex'
     ];
+
+    public function scopeActiveWithSex($query, $value)
+    {
+        // USO: Newsletter::activeAndSex(1)->get();
+        $query->where('active', true)->where('sex',$value);
+    }
 }

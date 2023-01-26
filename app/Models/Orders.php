@@ -61,4 +61,22 @@ class Orders extends Model
     {
         return $this->hasOne(Coupons::class, 'id', 'coupon');
     }
+
+    public function scopePaid($query)
+    {
+        // USO: Orders::paid()->get();
+        $query->where('paid', true);
+    }
+
+    public function scopeSend($query)
+    {
+        // USO: Orders::send()->get();
+        $query->where('status', 2);
+    }
+
+    public function scopeDelivered($query)
+    {
+        // USO: Orders::delivered()->get();
+        $query->where('status', 3);
+    }
 }

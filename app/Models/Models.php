@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -37,5 +38,11 @@ class Models extends Model
     public function favorites(): HasMany
     {
         return $this->hasMany(Favorite::class, 'product', 'id');
+    }
+
+    public function scopeActiveAndLastUpdated($query)
+    {
+        // USO: Models::activeAndLastUpdated()->get();
+        $query->where('active', true)->where('updated_at', '>=', Carbon::now()->subWeek());
     }
 }
