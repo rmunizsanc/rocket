@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return \App\Models\Models::with('products.stock', 'products.rate')
+        ->paginate(20);
 });
