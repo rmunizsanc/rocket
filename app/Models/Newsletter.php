@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\Sex;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,5 +16,9 @@ class Newsletter extends Model
         'email',
         'active',
         'sex'
+    ];
+
+    protected $casts = [
+        'sex' => Sex::class
     ];
 }
