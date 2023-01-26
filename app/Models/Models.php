@@ -38,14 +38,4 @@ class Models extends Model
     {
         return $this->hasMany(Favorite::class, 'product', 'id');
     }
-
-
-    public function toElastic()
-    {
-        return [
-            'name' => $this->name,
-            'code' => $this->code,
-            'url' => $this->url
-        ];
-    }
 }
